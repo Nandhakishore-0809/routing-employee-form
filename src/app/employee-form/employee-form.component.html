@@ -1,0 +1,160 @@
+<div class="main">
+  <h3>Employee Details Form</h3>
+  <mat-horizontal-stepper linear #stepper>
+    <mat-step
+      label="Personal Details"
+      [stepControl]="firstFormGroup"
+      [editable]="isEditable"
+    >
+      <form [formGroup]="firstFormGroup">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input name="name" matInput formControlName="name" #name />
+          <mat-hint>Min 2 Characters</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Date Of Birth</mat-label>
+          <input
+            name="dateofbirth"
+            matInput
+            formControlName="dateofbirth"
+            #dob
+          />
+          <mat-hint>Please Enter Date of Birth</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Gender</mat-label>
+          <mat-select #gender>
+            <mat-option value="male">Male</mat-option>
+            <mat-option value="female">Female</mat-option>
+          </mat-select>
+          <mat-hint>Please Select Anyone</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Blood Group</mat-label>
+          <mat-select #bloodgroup>
+            <mat-option value="o+ve">O+ve</mat-option>
+            <mat-option value="o-ve">O-ve</mat-option>
+            <mat-option value="b+ve">B+ve</mat-option>
+            <mat-option value="ab-ve">AB-ve</mat-option>
+          </mat-select>
+          <mat-hint>Please Select Anyone</mat-hint>
+        </mat-form-field>
+        <div>
+          <button
+            mat-raised-button
+            color="primary"
+            matStepperNext
+            type="button"
+          >
+            Next
+          </button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step
+      label="Contact Details"
+      [stepControl]="secondFormGroup"
+      [editable]="isEditable"
+    >
+      <form [formGroup]="secondFormGroup">
+        <mat-form-field appearance="outline">
+          <mat-label>Email-id</mat-label>
+          <input
+            name="email"
+            matInput
+            formControlName="email"
+            pattern="([a-zA-Z0-9\.-]+)@([a-zA-Z0-9-]+)\.([a-z]{2,20})"
+            #email
+          />
+
+          <mat-hint>should be in Email format</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Phone Number</mat-label>
+          <input
+            name="phoneno"
+            matInput
+            formControlName="phoneno"
+            pattern="[6789][0-9]{9}"
+            #phoneno
+          />
+          <mat-hint>should be in Number format</mat-hint>
+        </mat-form-field>
+        <div>
+          <button
+            mat-raised-button
+            color="primary"
+            matStepperPrevious
+            type="button"
+          >
+            Previous
+          </button>
+          <button
+            mat-raised-button
+            color="primary"
+            matStepperNext
+            type="button"
+          >
+            Next
+          </button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step
+      label="Comments"
+      [stepControl]="thirdFormGroup"
+      [editable]="isEditable"
+    >
+      <form [formGroup]="thirdFormGroup">
+        <mat-form-field appearance="outline">
+          <mat-label>Comments</mat-label>
+          <textarea matInput></textarea>
+        </mat-form-field>
+        <div>
+          <button
+            mat-raised-button
+            color="primary"
+            matStepperPrevious
+            type="button"
+          >
+            Previous
+          </button>
+          <button
+            mat-raised-button
+            color="primary"
+            matStepperNext
+            type="button"
+          >
+            Next
+          </button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step
+      label="Preview & Submit"
+      [stepControl]="thirdFormGroup"
+      [editable]="isEditable"
+    >
+      <form [formGroup]="fourthFormGroup">
+        <p>Name:{{ name.value }}</p>
+        <p>Date Of Birth:{{ dob.value }}</p>
+        <p>Gender:{{ gender.value }}</p>
+        <p>Blood Group:{{ bloodgroup.value }}</p>
+        <p>Email:{{ email.value }}</p>
+        <p>PhoneNo:{{ phoneno.value }}</p>
+        <div>
+          <button mat-raised-button color="primary" (click)="openSnackBar()">
+            Submit
+          </button>
+          <button mat-raised-button color="primary" (click)="stepper.reset()">
+            Reset
+          </button>
+        </div>
+      </form>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

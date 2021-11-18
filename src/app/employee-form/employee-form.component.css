@@ -1,0 +1,33 @@
+@media (min-width: 992px) and (max-width: 1400px) {
+  p {
+    font-family: Lato;
+  }
+  .main {
+    width: 60%;
+    border-style: solid;
+    border-width: 1px;
+
+    border-color: #b3afaff1;
+    margin-top: 70px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 70%;
+  }
+  h3 {
+    /* border: solid; */
+    text-align: center;
+    padding-top: 20px;
+  }
+  mat-form-field {
+    width: 42%;
+    margin-right: 8%;
+    margin-bottom: 20px;
+  }
+  button {
+    margin-top: 20px;
+    margin-right: 2%;
+  }
+  mat-step {
+    background-color: white;
+  }
+}
